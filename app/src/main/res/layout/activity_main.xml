@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signinpage_style"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="14dp"
+        app:srcCompat="@drawable/hotel" />
+
+    <EditText
+        android:id="@+id/useremail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:hint="Kullanıcı adınızı girin"
+        android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/userpassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/useremail"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/signin_edit_bg"
+        android:hint="Şifrenizi girin"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userpassword"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorGray"
+        android:background="@drawable/button_style"
+        android:text="Giriş Yap" />
+
+    <TextView
+        android:id="@+id/createnewuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="70dp"
+        android:text="Kayıt ol"
+        android:textAlignment="center"
+        android:textColor="@color/colorGray"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/newpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createnewuser"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="70dp"
+        android:text="Şifremi unuttum"
+        android:textAlignment="center"
+        android:textColor="@color/colorGray"
+        android:textSize="15dp" />
+
+
+</RelativeLayout>
