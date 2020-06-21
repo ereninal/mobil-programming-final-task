@@ -3,6 +3,8 @@ package com.example.myapplication;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class ModelUsers implements Parcelable {
 
     private int Id;
@@ -11,9 +13,15 @@ public class ModelUsers implements Parcelable {
     private String Email;
     private String Password;
     private String Session;
-
+    public List<ModelUsers> Users;
 
     protected ModelUsers(Parcel in) {
+        Id = in.readInt();
+        FullName = in.readString();
+        Username = in.readString();
+        Email = in.readString();
+        Password = in.readString();
+        Session = in.readString();
     }
 
     public static final Creator<ModelUsers> CREATOR = new Creator<ModelUsers>() {
@@ -35,5 +43,11 @@ public class ModelUsers implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(Id);
+        dest.writeString(FullName);
+        dest.writeString(Username);
+        dest.writeString(Email);
+        dest.writeString(Password);
+        dest.writeString(Session);
     }
 }
