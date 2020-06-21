@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    HelperDatabase db = new HelperDatabase();
+
     ModelUsers user = null;
     Button login;
     EditText txtMail,txtpassword;
@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     Toast toast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);//android.os.NetworkOnMainThreadException hatasının önüne geçmek için gerekl,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         login = (Button)findViewById(R.id.login);
@@ -30,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO: Dataabse classes wil bee add
 
 
             }

@@ -15,6 +15,9 @@ public class ModelUsers implements Parcelable {
     private String Session;
     public List<ModelUsers> Users;
 
+    public ModelUsers(){
+
+    }
     protected ModelUsers(Parcel in) {
         Id = in.readInt();
         FullName = in.readString();
