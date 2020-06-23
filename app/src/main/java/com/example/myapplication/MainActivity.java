@@ -1,17 +1,14 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     HelperDatabaseOperations db = new HelperDatabaseOperations(this);
@@ -34,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
                     for ( ModelUsers user:db.GetUser(txtMail.getText().toString()))
                     {
                         if(txtpassword.getText().toString().equals(user.getPassword())){
-                            Toast.makeText(getApplicationContext(),"Giriş Başarılı",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Kulanıcı Sayfasına Yönlendiriliyorsunuz..",Toast.LENGTH_LONG).show();
+                            Intent intent =new Intent(getApplicationContext(),AddPropertActivity.class);
+                            intent.putExtra("user",user);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"Şifre yanlış!",Toast.LENGTH_LONG).show();

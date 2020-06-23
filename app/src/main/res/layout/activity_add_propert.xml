@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".AddPropertActivity">
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Başlık giriniz"
+        android:inputType="text"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="70dp"
+        android:text="Mülk Tipi Seçin:"
+        android:textColor="@color/colorGray"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="70dp">
+
+        <RadioButton
+            android:id="@+id/radioHome"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorGray"
+            android:text="Ev" />
+
+        <RadioButton
+            android:id="@+id/radioRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:checked="true"
+            android:text="Oda"
+            android:textColor="@color/colorGray"
+            android:textSize="20dp" />
+
+    </RadioGroup>
+    <EditText
+        android:id="@+id/roomCount"
+        android:layout_below="@id/textView"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Oda Sayısı"
+        android:inputType="number"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+    <EditText
+        android:id="@+id/buildingAge"
+        android:layout_below="@id/roomCount"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Bina Yaşı"
+        android:inputType="number"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+    <EditText
+        android:id="@+id/location"
+        android:layout_below="@id/buildingAge"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Bulunduğu kat"
+        android:inputType="number"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+    <EditText
+        android:id="@+id/heating"
+        android:layout_below="@id/location"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Isıtma"
+        android:inputType="text"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+    <EditText
+        android:id="@+id/country"
+        android:layout_below="@id/heating"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="İl"
+        android:inputType="text"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+    <EditText
+        android:id="@+id/district"
+        android:layout_below="@id/heating"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="İlçe"
+        android:inputType="text"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_below="@+id/district"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Adresini yazın"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+    <EditText
+        android:id="@+id/fee"
+        android:layout_below="@id/address"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:hint="Ücret"
+        android:inputType="number"
+        android:padding="6dp"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray" />
+
+    <ImageView
+        android:id="@+id/imageAppIcon"
+        android:layout_below="@+id/fee"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/hotel"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        />
+
+    <Button
+        android:id="@+id/uploadImage"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="70dp"
+        android:layout_toEndOf="@+id/imageAppIcon"
+        android:textColor="@color/colorGray"
+        android:background="@drawable/button_style"
+        android:text="Resim Yükle" />
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageAppIcon"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:textColor="@color/colorGray"
+        android:background="@drawable/button_style"
+        android:text="Resim Yükle" />
+
+</RelativeLayout>

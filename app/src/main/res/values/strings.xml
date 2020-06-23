@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Hotel App</string>
+    <string name="title_activity_user_page">UserPageActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Hoşgeldiniz</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_gallery">Galeri</string>
+    <string name="menu_home">Anasayfa</string>
+    <string name="menu_slideshow">Slide</string>
+    <string name="menu_user_new_propert">Yeni Mülk Ekle</string>
+    <string name="menu_user_edit">Kullanıcı Düzenle</string>
+    <string name="menu_user_propert">Mülklerim</string>
+    <string name="home_second">Home Second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="spinner_type">
+        <item>Ev</item>
+        <item>Oda</item>
+    </string-array>
+
+
 </resources>

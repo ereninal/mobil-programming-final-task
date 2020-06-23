@@ -6,4 +6,7 @@
     <color name="colorDarkBlue">#17706E</color>
     <color name="colorGray">#f5f5f5</color>
     <color name="colorLightGray">#1affffff</color>
+    <color name="colorLightGreen">#87dfd6</color>
+    <color name="colorSeaGreen">#086972</color>
+
 </resources>

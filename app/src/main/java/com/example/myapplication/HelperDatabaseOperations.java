@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,7 @@ public class HelperDatabaseOperations {
     private static void DatabaseClose(){
         helperDatabase.close();
     }
+    /****************************User Operations**********************************/
     public void FirstUserInsert(){//bir sefer kullanıcak
         DatabaseOpen();
         users = new ModelUsers();
@@ -43,6 +43,7 @@ public class HelperDatabaseOperations {
     public void InsertUser(ModelUsers modelUsers){
         DatabaseOpen();
         users.setUsers(modelUsers);
+        values.clear();
         values.put("Fullname",modelUsers.getFullName());
         values.put("Username", modelUsers.getUsername());
         values.put("Email", modelUsers.getEmail());
@@ -97,5 +98,31 @@ public class HelperDatabaseOperations {
         }
         return null;
     }
+
+    /********************************Propert Operations*****************************************/
+
+    public void InsertPropert(ModelPropert propert){
+        DatabaseOpen();
+        values.clear();
+        values.put("Title",propert.getTitle());
+        values.put("Date",propert.getTitle());
+        values.put("Type",propert.getTitle());
+        values.put("Title",propert.getTitle());
+        values.put("RoomCount",propert.getTitle());
+        values.put("BuildingAge",propert.getTitle());
+        values.put("FloorLocation",propert.getTitle());
+        values.put("Heating",propert.getTitle());
+        values.put("Country",propert.getTitle());
+        values.put("District",propert.getTitle());
+        values.put("Address",propert.getTitle());
+        values.put("Fee",propert.getTitle());
+        values.put("Images",propert.getTitle());
+        db.insert("propert",null,values);
+        DatabaseClose();
+    }
+    /*public Cursor GetUserAllPropert(){
+
+    }*/
+
 
 }
