@@ -2,13 +2,12 @@ package com.example.myapplication;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import java.util.Date;
 
 public class ModelPropert implements Parcelable {
 
     private int Id;
     private String Title;
-    private Date Date;
+    private String Date;
     private String Type;
     private String RoomCount;
     private String BuildingAge;
@@ -37,6 +36,18 @@ public class ModelPropert implements Parcelable {
         UserId = in.readInt();
         Images = new byte[in.readInt()];
         in.readByteArray(Images);
+    }
+    public ModelPropert(int id,String title,String fee,String type,String date,byte[] img){
+        Id=id;
+        Title=title;
+        Fee = fee;
+        Type = type;
+        Images = img;
+        Date=date;
+
+    }
+    public ModelPropert(){
+
     }
 
     public static final Creator<ModelPropert> CREATOR = new Creator<ModelPropert>() {
@@ -67,11 +78,11 @@ public class ModelPropert implements Parcelable {
         Title = title;
     }
 
-    public java.util.Date getDate() {
+    public String getDate() {
         return Date;
     }
 
-    public void setDate(java.util.Date date) {
+    public void setDate(String date) {
         Date = date;
     }
 

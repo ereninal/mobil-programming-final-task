@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if(txtpassword.getText().toString().equals(user.getPassword())){
                             Toast.makeText(getApplicationContext(),"Kulanıcı Sayfasına Yönlendiriliyorsunuz..",Toast.LENGTH_LONG).show();
-                            Intent intent =new Intent(getApplicationContext(),AddPropertActivity.class);
+                            Intent intent =new Intent(getApplicationContext(),UserPageActivity.class);
                             intent.putExtra("user",user);
                             startActivity(intent);
                         }
