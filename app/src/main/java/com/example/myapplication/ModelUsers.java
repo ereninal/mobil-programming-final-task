@@ -14,6 +14,15 @@ public class ModelUsers implements Parcelable {
     private String Email;
     private String Password;
     private String Session;
+    private byte[] Image;
+
+    public byte[] getImage() {
+        return Image;
+    }
+
+    public void setImage(byte[] image) {
+        Image = image;
+    }
 
     public int getId() {
         return Id;

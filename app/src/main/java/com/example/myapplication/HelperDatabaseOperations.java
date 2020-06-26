@@ -119,7 +119,17 @@ public class HelperDatabaseOperations {
         }
         return false;
     }
-
+    public void UserUpdate(int id,String name,String uname,String mail,String pass, byte[] img){
+        DatabaseOpen();
+        String query ="update users set Password='"+pass+"',Fullname='"+name+"',Username='"+uname+"',Email='"+mail+"',Image='"+img+"' where Id='"+id+"'";
+        try{
+            //db.update("users",values,"Username="+username,null);
+            db.execSQL(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        DatabaseClose();
+    }
     public void UserPasswordUptade(String username,String password){
         DatabaseOpen();
         //Log.d("d",password);

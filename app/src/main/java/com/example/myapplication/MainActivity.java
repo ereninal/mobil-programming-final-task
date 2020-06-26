@@ -31,9 +31,16 @@ public class MainActivity extends AppCompatActivity {
                     for ( ModelUsers user:db.GetUser(txtMail.getText().toString()))
                     {
                         if(txtpassword.getText().toString().equals(user.getPassword())){
+                            ModelUsers u = new ModelUsers();
+                            u.setId(user.getId());
+                            u.setFullName(user.getFullName());
+                            u.setUsername(user.getUsername());
+                            u.setEmail(user.getEmail());
+                            u.setPassword(user.getPassword());
+                            u.setImage(user.getImage());
                             Toast.makeText(getApplicationContext(),"Kulanıcı Sayfasına Yönlendiriliyorsunuz..",Toast.LENGTH_LONG).show();
-                            Intent intent =new Intent(getApplicationContext(),UserPageActivity.class);
-                            intent.putExtra("user",user);
+                            Intent intent =new Intent(getApplicationContext(),UserUpdatePageActivity.class);
+                            intent.putExtra("user",u);
                             startActivity(intent);
                         }
                         else{

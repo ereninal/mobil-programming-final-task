@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signinpage_style"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/userimageView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="14dp"
+        app:srcCompat="@drawable/hotel" />
+
+    <EditText
+        android:id="@+id/u_username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/userimageView"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:background="@drawable/signin_edit_bg"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/u_userpassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/u_username"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/signin_edit_bg"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/u_userfullname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/u_userpassword"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/signin_edit_bg"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/u_useremail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/u_userfullname"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:padding="10dp"
+        android:ems="10"
+        android:textColor="@color/colorGray"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/signin_edit_bg"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/u_useremail"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorGray"
+        android:background="@drawable/button_style"
+        android:text="Güncelle" />
+
+
+</RelativeLayout>

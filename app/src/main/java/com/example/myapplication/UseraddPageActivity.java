@@ -46,7 +46,6 @@ public class UseraddPageActivity extends AppCompatActivity {
                     else{
                         Toast.makeText(getApplicationContext(),"Kullanıcı adı zaten var.",Toast.LENGTH_LONG).show();
                     }
-
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Boş alan bırakamazsınız.",Toast.LENGTH_LONG).show();
