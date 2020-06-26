@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     HelperDatabaseOperations db = new HelperDatabaseOperations(this);
     Button login;
     EditText txtMail,txtpassword;
-    TextView twNewuser,txNewPassword,test;
+    TextView twNewuser,txNewPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         login = (Button)findViewById(R.id.login);
         txtMail = (EditText)findViewById(R.id.useremail);
         txtpassword = (EditText)findViewById(R.id.userpassword);
-        test = (TextView)findViewById(R.id.test);
+        twNewuser =(TextView)findViewById(R.id.newuser);
         txNewPassword =(TextView)findViewById(R.id.newpassword);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(getApplicationContext(),UserNewPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+        twNewuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getApplicationContext(),UseraddPageActivity.class);
                 startActivity(intent);
             }
         });

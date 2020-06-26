@@ -46,6 +46,7 @@ public class HelperDatabaseOperations {
     }
     public void InsertUser(ModelUsers modelUsers){
         DatabaseOpen();
+        users = new ModelUsers();
         users.setUsers(modelUsers);
         values.clear();
         values.put("Fullname",modelUsers.getFullName());
@@ -55,7 +56,7 @@ public class HelperDatabaseOperations {
 
         db.insert("users",null,values);
         DatabaseClose();
-        //TODO: Yeni Kullanıcı oluşturma işlemi yapılacak
+
     }
     public List<ModelUsers> GetUserAll(){//tüm kullanıcı veri tabanını listeler
         List<ModelUsers> u = new ArrayList<>();
@@ -102,6 +103,23 @@ public class HelperDatabaseOperations {
         }
         return null;
     }
+    public boolean GetUserCheck(String username){
+        List<ModelUsers> u = new ArrayList<>();
+        DatabaseOpen();
+        String columns[] ={"Id","Fullname","Username","Password","Email"};
+        Cursor cursor = db.query("users",columns,
+                null,null,null,null,null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            //cursor.getString(2).equalsIgnoreCase(username)
+            if(cursor.getString(2).equals(username)){
+                return true;
+            }
+            cursor.moveToNext();
+        }
+        return false;
+    }
+
     public void UserPasswordUptade(String username,String password){
         DatabaseOpen();
         //Log.d("d",password);

@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserNewPasswordActivity"></activity>
+        <activity android:name=".UseraddPageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".UserNewPasswordActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".AddPropertActivity" />
         <activity
             android:name=".UserPageActivity"
