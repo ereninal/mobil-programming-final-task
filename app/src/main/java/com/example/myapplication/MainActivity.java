@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         txtMail = (EditText)findViewById(R.id.useremail);
         txtpassword = (EditText)findViewById(R.id.userpassword);
         test = (TextView)findViewById(R.id.test);
-        final String pass =txtpassword.getText().toString();
+        txNewPassword =(TextView)findViewById(R.id.newpassword);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+        txNewPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getApplicationContext(),UserNewPasswordActivity.class);
+                startActivity(intent);
             }
         });
 

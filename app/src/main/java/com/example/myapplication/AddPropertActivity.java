@@ -96,7 +96,7 @@ public class AddPropertActivity extends AppCompatActivity {
                     propert.setDate(currentTime.toString());
                     propert.setUserId(user.getId());
                     try{
-                        db.InsertPropert(propert);
+                        db.InsertPropert(propert,1);
                         Toast.makeText(getApplicationContext(),"Mülk Eklendi",Toast.LENGTH_LONG).show();
                     }catch(Exception e){
                         e.printStackTrace();

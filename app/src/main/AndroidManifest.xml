@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddPropertActivity"></activity>
+        <activity android:name=".UserNewPasswordActivity"></activity>
+        <activity android:name=".AddPropertActivity" />
         <activity
             android:name=".UserPageActivity"
             android:label="@string/title_activity_user_page"
-            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">

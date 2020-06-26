@@ -102,12 +102,29 @@ public class HelperDatabaseOperations {
         }
         return null;
     }
+    public void UserPasswordUptade(String username,String password){
+        DatabaseOpen();
+        //Log.d("d",password);
+        values.clear();
+        values.put("Password",password);
+        String query ="update users set Password='"+password+"' where Username='"+username+"'";
+        try{
+            //db.update("users",values,"Username="+username,null);
+            db.execSQL(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        DatabaseClose();
+
+
+
+    }
     public List<ModelPropert> GetAllPropertUserId(int userId){
         List<ModelPropert> p = new ArrayList<>();
         ModelPropert propert;
         DatabaseOpen();
         String columns[] ={"Id","Title","Date","Type","RoomCount","BuildingAge","FloorLocation","Heating","Country","District","Adress","Fee","Images","UserId"};
-        Cursor cursor = db.query("users",columns,
+        Cursor cursor = db.query("propert",columns,
                 null,null,null,null,null);
         cursor.moveToFirst();
         /*String query = "select Id,Title,Fee,Type,Date,Images from propert";
@@ -128,8 +145,7 @@ public class HelperDatabaseOperations {
             propert.setAddress(cursor.getString(10));
             propert.setFee(cursor.getString(11));
             propert.setImages(cursor.getBlob(12));
-            propert.setRoomCount(cursor.getString(13));
-            propert.setUserId(cursor.getInt(14));
+            propert.setUserId(cursor.getInt(13));
             //properts.add(new ModelPropert(id,title,fee,type,date,img));
             p.add(propert);
             cursor.moveToNext();
@@ -140,22 +156,22 @@ public class HelperDatabaseOperations {
     }
     /********************************Propert Operations*****************************************/
 
-    public void InsertPropert(ModelPropert propert){
+    public void InsertPropert(ModelPropert propert,int UserId){
         DatabaseOpen();
         values.clear();
         values.put("Title",propert.getTitle());
-        values.put("Date",propert.getTitle());
-        values.put("Type",propert.getTitle());
-        values.put("Title",propert.getTitle());
-        values.put("RoomCount",propert.getTitle());
-        values.put("BuildingAge",propert.getTitle());
-        values.put("FloorLocation",propert.getTitle());
-        values.put("Heating",propert.getTitle());
-        values.put("Country",propert.getTitle());
-        values.put("District",propert.getTitle());
-        values.put("Adress",propert.getTitle());
-        values.put("Fee",propert.getTitle());
-        values.put("Images",propert.getTitle());
+        values.put("Date",propert.getDate());
+        values.put("Type",propert.getType());
+       values.put("RoomCount",propert.getRoomCount());
+        values.put("BuildingAge",propert.getBuildingAge());
+        values.put("FloorLocation",propert.getFloorLocation());
+        values.put("Heating",propert.getHeating());
+        values.put("Country",propert.getCountry());
+        values.put("District",propert.getDistrict());
+        values.put("Adress",propert.getAddress());
+        values.put("Fee",propert.getFee());
+        values.put("Images",propert.getImages());
+        values.put("UserId",UserId);
         db.insert("propert",null,values);
         DatabaseClose();
     }
