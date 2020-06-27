@@ -66,7 +66,8 @@ public class PropertListAdapter extends BaseAdapter {
         holder.date.setText(modelPropert.getDate().toString());
         byte[] propetImage = modelPropert.getImages();
         Bitmap bitmap = BitmapFactory.decodeByteArray(propetImage,0,propetImage.length);
-        holder.title.setText(modelPropert.getTitle());
+        holder.imageView.setImageBitmap(bitmap);
+
 
 
 

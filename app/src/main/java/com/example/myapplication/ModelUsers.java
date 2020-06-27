@@ -16,6 +16,46 @@ public class ModelUsers implements Parcelable {
     private String Session;
     private byte[] Image;
 
+    protected ModelUsers(Parcel in) {
+        Id = in.readInt();
+        FullName = in.readString();
+        Username = in.readString();
+        Email = in.readString();
+        Password = in.readString();
+        Session = in.readString();
+        Image = in.createByteArray();
+        Users = in.createTypedArrayList(ModelUsers.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(Id);
+        dest.writeString(FullName);
+        dest.writeString(Username);
+        dest.writeString(Email);
+        dest.writeString(Password);
+        dest.writeString(Session);
+        dest.writeByteArray(Image);
+        dest.writeTypedList(Users);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ModelUsers> CREATOR = new Creator<ModelUsers>() {
+        @Override
+        public ModelUsers createFromParcel(Parcel in) {
+            return new ModelUsers(in);
+        }
+
+        @Override
+        public ModelUsers[] newArray(int size) {
+            return new ModelUsers[size];
+        }
+    };
+
     public byte[] getImage() {
         return Image;
     }
@@ -83,42 +123,10 @@ public class ModelUsers implements Parcelable {
 
     public List<ModelUsers> Users = new ArrayList<>();
 
-    public ModelUsers(){
+    public ModelUsers() {
 
-    }
-    protected ModelUsers(Parcel in) {
-        Id = in.readInt();
-        FullName = in.readString();
-        Username = in.readString();
-        Email = in.readString();
-        Password = in.readString();
-        Session = in.readString();
-    }
-
-    public static final Creator<ModelUsers> CREATOR = new Creator<ModelUsers>() {
-        @Override
-        public ModelUsers createFromParcel(Parcel in) {
-            return new ModelUsers(in);
-        }
-
-        @Override
-        public ModelUsers[] newArray(int size) {
-            return new ModelUsers[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(Id);
-        dest.writeString(FullName);
-        dest.writeString(Username);
-        dest.writeString(Email);
-        dest.writeString(Password);
-        dest.writeString(Session);
     }
 }
+
+
+

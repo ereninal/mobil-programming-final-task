@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ public class UserUpdatePageActivity extends AppCompatActivity {
     EditText fullname,username,email,password;
     Button update;
     ImageView userImage;
+    String old_username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,18 +44,33 @@ public class UserUpdatePageActivity extends AppCompatActivity {
         users = bundle.getParcelable("user");
         fullname.setText(users.getFullName());
         username.setText(users.getUsername());
+        old_username=users.getUsername();
         email.setText(users.getEmail());
         password.setText(users.getPassword());
+        byte[] imageArray = users.getImage();
+        if(imageArray != null){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageArray,0,imageArray.length);
+            userImage.setImageBitmap(bitmap);
+        }
+
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!db.GetUserCheck(username.getText().toString())){
+                if(username.getText().toString().equals(old_username)){
+
+                    db.UserUpdate(users.getId(),fullname.getText().toString(),username.getText().toString(),email.getText().toString(),password.getText().toString(),db.ImageViewToByte(userImage));
+                    Toast.makeText(getApplicationContext(), "Güncelleme Başarılı", Toast.LENGTH_SHORT).show();
+                }
+                else if(!db.GetUserCheck(username.getText().toString())){
                     db.UserUpdate(users.getId(),fullname.getText().toString(),username.getText().toString(),email.getText().toString(),password.getText().toString(),db.ImageViewToByte(userImage));
                     Toast.makeText(getApplicationContext(), "Güncelleme Başarılı", Toast.LENGTH_SHORT).show();
                     //TODO: güncelleme ekranına tekrar bakılacak.
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Kullanıcı adı zaten var", Toast.LENGTH_SHORT).show();
+                    Log.d("d",old_username);
+
                 }
 
 

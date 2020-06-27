@@ -82,7 +82,7 @@ public class HelperDatabaseOperations {
     public List<ModelUsers> GetUser(String username){
         List<ModelUsers> u = new ArrayList<>();
         DatabaseOpen();
-        String columns[] ={"Id","Fullname","Username","Password","Email"};
+        String columns[] ={"Id","Fullname","Username","Password","Email","Image"};
         Cursor cursor = db.query("users",columns,
                 null,null,null,null,null);
         cursor.moveToFirst();
@@ -95,7 +95,7 @@ public class HelperDatabaseOperations {
                 users.setUsername(cursor.getString(2));
                 users.setPassword(cursor.getString(3));
                 users.setEmail(cursor.getString(4));
-
+                users.setImage(cursor.getBlob(5));
                 u.add(users);
                 return u;
             }
@@ -210,8 +210,8 @@ public class HelperDatabaseOperations {
         return db.rawQuery(query,null);
 
     }*/
-    public byte[] ImageViewToByte (ImageView iimage){
-        Bitmap bitmap =((BitmapDrawable)iimage.getDrawable()).getBitmap();
+    public byte[] ImageViewToByte (ImageView image){
+        Bitmap bitmap =((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
         byte[] bytes = stream.toByteArray();
