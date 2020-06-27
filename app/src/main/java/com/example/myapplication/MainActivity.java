@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                             u.setPassword(user.getPassword());
                             u.setImage(user.getImage());
                             Toast.makeText(getApplicationContext(),"Kulanıcı Sayfasına Yönlendiriliyorsunuz..",Toast.LENGTH_LONG).show();
-                            Intent intent =new Intent(getApplicationContext(),UserUpdatePageActivity.class);
+                            Intent intent =new Intent(getApplicationContext(),UserPageActivity.class);
                             intent.putExtra("user",u);
                             startActivity(intent);
                         }

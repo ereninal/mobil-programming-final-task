@@ -147,22 +147,89 @@ public class HelperDatabaseOperations {
 
 
     }
-    public List<ModelPropert> GetAllPropertUserId(int userId){
+
+
+    /********************************Propert Operations*****************************************/
+
+    public void InsertPropert(ModelPropert propert,int UserId){
+        DatabaseOpen();
+        values.clear();
+        values.put("Title",propert.getTitle());
+        values.put("Date",propert.getDate());
+        values.put("Type",propert.getType());
+        values.put("RoomCount",propert.getRoomCount());
+        values.put("BuildingAge",propert.getBuildingAge());
+        values.put("FloorLocation",propert.getFloorLocation());
+        values.put("Heating",propert.getHeating());
+        values.put("Country",propert.getCountry());
+        values.put("District",propert.getDistrict());
+        values.put("Adress",propert.getAddress());
+        values.put("Fee",propert.getFee());
+        values.put("Images",propert.getImages());
+        values.put("UserId",UserId);
+        db.insert("propert",null,values);
+        DatabaseClose();
+    }
+    public List<ModelPropert> GetAllPropertUserId(int userId) {
         List<ModelPropert> p = new ArrayList<>();
         ModelPropert propert;
         DatabaseOpen();
-        String columns[] ={"Id","Title","Date","Type","RoomCount","BuildingAge","FloorLocation","Heating","Country","District","Adress","Fee","Images","UserId"};
-        Cursor cursor = db.query("propert",columns,
-                null,null,null,null,null);
+        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge", "FloorLocation", "Heating", "Country", "District", "Adress", "Fee", "Images", "UserId"};
+        Cursor cursor = db.query("propert", columns,
+                null, null, null, null, null);
         cursor.moveToFirst();
-        /*String query = "select Id,Title,Fee,Type,Date,Images from propert";
-        Cursor cursor = db.rawQuery(query,null);
-        cursor.moveToFirst();*/
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
+            if(cursor.getString(13).equals(userId)){
+                propert = new ModelPropert();
+                propert.setUserId(cursor.getInt(0));
+                propert.setTitle(cursor.getString(1));
+                propert.setDate(cursor.getString(2));
+                propert.setType(cursor.getString(3));
+                propert.setRoomCount(cursor.getString(4));
+                propert.setBuildingAge(cursor.getString(5));
+                propert.setFloorLocation(cursor.getString(6));
+                propert.setHeating(cursor.getString(7));
+                propert.setCountry(cursor.getString(8));
+                propert.setDistrict(cursor.getString(9));
+                propert.setAddress(cursor.getString(10));
+                propert.setFee(cursor.getString(11));
+                propert.setImages(cursor.getBlob(12));
+                propert.setUserId(cursor.getInt(13));
+                //properts.add(new ModelPropert(id,title,fee,type,date,img));
+                p.add(propert);
+                cursor.moveToNext();
+
+            }
+
+        }
+        DatabaseClose();
+        return p;
+    }
+    public void DeletePropert(int userId){
+        DatabaseOpen();
+        String id = String.valueOf(userId);
+        String query ="delete from propert where UserId='"+id+"'";
+        try{
+            db.execSQL(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        DatabaseClose();
+
+    }
+    public List<ModelPropert> GetAllPropert(){
+        List<ModelPropert> p = new ArrayList<>();
+        ModelPropert propert;
+        DatabaseOpen();
+        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge", "FloorLocation", "Heating", "Country", "District", "Adress", "Fee", "Images", "UserId"};
+        Cursor cursor = db.query("propert", columns,
+                null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
             propert = new ModelPropert();
             propert.setUserId(cursor.getInt(0));
             propert.setTitle(cursor.getString(1));
-            propert.setDate( cursor.getString(2));
+            propert.setDate(cursor.getString(2));
             propert.setType(cursor.getString(3));
             propert.setRoomCount(cursor.getString(4));
             propert.setBuildingAge(cursor.getString(5));
@@ -182,28 +249,6 @@ public class HelperDatabaseOperations {
         DatabaseClose();
         return p;
     }
-    /********************************Propert Operations*****************************************/
-
-    public void InsertPropert(ModelPropert propert,int UserId){
-        DatabaseOpen();
-        values.clear();
-        values.put("Title",propert.getTitle());
-        values.put("Date",propert.getDate());
-        values.put("Type",propert.getType());
-       values.put("RoomCount",propert.getRoomCount());
-        values.put("BuildingAge",propert.getBuildingAge());
-        values.put("FloorLocation",propert.getFloorLocation());
-        values.put("Heating",propert.getHeating());
-        values.put("Country",propert.getCountry());
-        values.put("District",propert.getDistrict());
-        values.put("Adress",propert.getAddress());
-        values.put("Fee",propert.getFee());
-        values.put("Images",propert.getImages());
-        values.put("UserId",UserId);
-        db.insert("propert",null,values);
-        DatabaseClose();
-    }
-
     /*public Cursor GetUserAllPropert(int userId){
         DatabaseOpen();
         String query = "select Id,Title,Fee,Type,Date,Images from propert where UserId="+userId;

@@ -64,7 +64,7 @@ public class AddPropertActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(AddPropertActivity.this,
                         new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY);
-                //Log.d("upload","upload");
+
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
@@ -82,28 +82,25 @@ public class AddPropertActivity extends AppCompatActivity {
                     !address.getText().toString().equals(" ") &&
                     !fee.getText().toString().equals(" ")){
                     propert = new ModelPropert();
-                    propert.setTitle(title.toString());
-                    propert.setRoomCount(roomCount.toString());
-                    propert.setBuildingAge(age.toString());
-                    propert.setFloorLocation(loc.toString());
-                    propert.setCountry(country.toString());
-                    propert.setDistrict(dist.toString());
+                    propert.setTitle(title.getText().toString());
+                    propert.setRoomCount(roomCount.getText().toString());
+                    propert.setBuildingAge(age.getText().toString());
+                    propert.setFloorLocation(loc.getText().toString());
+                    propert.setCountry(country.getText().toString());
+                    propert.setDistrict(dist.getText().toString());
                     propert.setType(gender.getText().toString());
-                    propert.setAddress(address.toString());
+                    propert.setAddress(address.getText().toString());
                     propert.setImages(db.ImageViewToByte(propertImage));
-                    propert.setFee(fee.toString());
-                    propert.setHeating(heating.toString());
+                    propert.setFee(fee.getText().toString());
+                    propert.setHeating(heating.getText().toString());
                     propert.setDate(currentTime.toString());
                     propert.setUserId(user.getId());
                     try{
-                        db.InsertPropert(propert,1);
+                        db.InsertPropert(propert,user.getId());
                         Toast.makeText(getApplicationContext(),"Mülk Eklendi",Toast.LENGTH_LONG).show();
-                    }catch(Exception e){
+                    }catch(Exception e) {
                         e.printStackTrace();
                     }
-
-
-
                 }
                 else{
                     //TODO: giriş yapamazsa yapıalcak olanalar
