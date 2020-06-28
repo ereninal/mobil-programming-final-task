@@ -27,23 +27,7 @@ public class HelperDatabaseOperations {
         helperDatabase.close();
     }
     /****************************User Operations**********************************/
-    public void FirstUserInsert(){//bir sefer kullanıcak
-        DatabaseOpen();
-        users = new ModelUsers();
-        users.setUsername("ereninal");
-        users.setFullName("Eren İNAL");
-        users.setEmail("ereninal10@gmail.com");
-        users.setPassword("123456");
-        users.setSession("False");
-        users.setUsers(users);
-        values.put("Fullname",users.getFullName());
-        values.put("Username", users.getUsername());
-        values.put("Email", users.getEmail());
-        values.put("Password", users.getPassword());
-        db.insert("users",null,values);
-        DatabaseClose();
 
-    }
     public void InsertUser(ModelUsers modelUsers){
         DatabaseOpen();
         users = new ModelUsers();
@@ -133,11 +117,8 @@ public class HelperDatabaseOperations {
     public void UserPasswordUptade(String username,String password){
         DatabaseOpen();
         //Log.d("d",password);
-        values.clear();
-        values.put("Password",password);
         String query ="update users set Password='"+password+"' where Username='"+username+"'";
         try{
-            //db.update("users",values,"Username="+username,null);
             db.execSQL(query);
         }catch (Exception e){
             e.printStackTrace();
@@ -174,7 +155,9 @@ public class HelperDatabaseOperations {
         List<ModelPropert> p = new ArrayList<>();
         ModelPropert propert;
         DatabaseOpen();
-        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge", "FloorLocation", "Heating", "Country", "District", "Adress", "Fee", "Images", "UserId"};
+        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge",
+                "FloorLocation", "Heating", "Country", "District", "Adress",
+                "Fee", "Images", "UserId"};
         Cursor cursor = db.query("propert", columns,
                 null, null, null, null, null);
         cursor.moveToFirst();
@@ -198,9 +181,7 @@ public class HelperDatabaseOperations {
                 //properts.add(new ModelPropert(id,title,fee,type,date,img));
                 p.add(propert);
                 cursor.moveToNext();
-
             }
-
         }
         DatabaseClose();
         return p;
@@ -221,7 +202,9 @@ public class HelperDatabaseOperations {
         List<ModelPropert> p = new ArrayList<>();
         ModelPropert propert;
         DatabaseOpen();
-        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge", "FloorLocation", "Heating", "Country", "District", "Adress", "Fee", "Images", "UserId"};
+        String columns[] = {"Id", "Title", "Date", "Type", "RoomCount", "BuildingAge",
+                "FloorLocation", "Heating", "Country", "District", "Adress", "Fee",
+                "Images", "UserId"};
         Cursor cursor = db.query("propert", columns,
                 null, null, null, null, null);
         cursor.moveToFirst();
@@ -244,17 +227,10 @@ public class HelperDatabaseOperations {
             //properts.add(new ModelPropert(id,title,fee,type,date,img));
             p.add(propert);
             cursor.moveToNext();
-
         }
         DatabaseClose();
         return p;
     }
-    /*public Cursor GetUserAllPropert(int userId){
-        DatabaseOpen();
-        String query = "select Id,Title,Fee,Type,Date,Images from propert where UserId="+userId;
-        return db.rawQuery(query,null);
-
-    }*/
     public byte[] ImageViewToByte (ImageView image){
         Bitmap bitmap =((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

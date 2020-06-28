@@ -38,20 +38,11 @@ public class SessionMenager {
         editor = pref.edit();
     }
 
-    /**
-     * login session'ı oluşturuyoruz. Ilk defa gelen veriyi kaydediyoruz.
-     * */
+
     public void CreateLoginSession(String email, String sifre){
-
-        // giriş yapıldığında login değerini true yapıyoruz.
         editor.putBoolean(IS_LOGIN, true);
-
-        // email ve sifreyi editor ile kaydediyoruz.
         editor.putString(KEY_USERNAME, email);
-
         editor.putString(KEY_SIFRE, sifre);
-
-        // değişiklikleri yolluyoruz.
         editor.commit();
     }
 
@@ -87,22 +78,15 @@ public class SessionMenager {
         return user;
     }
 
-    /**
-     * çıkış yapıldığında session bilgilerini sil.
-     * */
+
     public void LogoutUser(){
 
-        // Shared Preferences dan tüm verileri sil.
         editor.clear();
         editor.commit();
-
-        // çıkıştan sonra giriş ekranına yönlendir.
         Intent i = new Intent(_context, MainActivity.class);
-
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         _context.startActivity(i);
     }
 
