@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,15 +11,37 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
     HelperDatabaseOperations db = new HelperDatabaseOperations(this);
+    SessionMenager session;
     Button login;
     EditText txtMail,txtpassword;
     TextView twNewuser,txNewPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new SessionMenager(getApplicationContext());
+
         setContentView(R.layout.activity_main);
+        if (session.IsLoggedIn() == true){
+            HashMap us = session.GetUserDetails();
+            for ( ModelUsers user:db.GetUser(us.get(SessionMenager.KEY_USERNAME).toString()))
+            {
+                Log.d("s",us.get(SessionMenager.KEY_USERNAME).toString());
+                ModelUsers u = new ModelUsers();
+                u.setId(user.getId());
+                u.setFullName(user.getFullName());
+                u.setUsername(user.getUsername());
+                u.setEmail(user.getEmail());
+                u.setPassword(user.getPassword());
+                u.setImage(user.getImage());
+                Intent intent =new Intent(getApplicationContext(),UserPageHomeActivity.class);
+                intent.putExtra("user",u);
+                startActivity(intent);
+            }
+        }
         login = (Button)findViewById(R.id.login);
         txtMail = (EditText)findViewById(R.id.useremail);
         txtpassword = (EditText)findViewById(R.id.userpassword);
@@ -39,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                             u.setPassword(user.getPassword());
                             u.setImage(user.getImage());
                             Toast.makeText(getApplicationContext(),"Kulanıcı Sayfasına Yönlendiriliyorsunuz..",Toast.LENGTH_LONG).show();
-                            Intent intent =new Intent(getApplicationContext(),UserPageActivity.class);
+                            session.CreateLoginSession(user.getUsername(), user.getPassword());
+                            Intent intent =new Intent(getApplicationContext(),UserPageHomeActivity.class);
                             intent.putExtra("user",u);
                             startActivity(intent);
                         }

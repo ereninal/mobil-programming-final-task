@@ -7,14 +7,15 @@
     android:background="@drawable/signinpage_style"
     tools:context=".MainActivity">
 
-
+    <include
+    layout="@layout/toolbar" />
     <ImageView
         android:id="@+id/userimageView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="84dp"
 
         app:srcCompat="@drawable/hotel" />
 

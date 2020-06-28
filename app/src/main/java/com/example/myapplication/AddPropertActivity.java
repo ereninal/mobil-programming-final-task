@@ -7,12 +7,16 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +41,7 @@ public class AddPropertActivity extends AppCompatActivity {
     RadioGroup genderGroup;
     Button image,save;
     ImageView propertImage;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,51 @@ public class AddPropertActivity extends AppCompatActivity {
         propertImage =(ImageView)findViewById(R.id.imageAppIcon);
         image =(Button)findViewById(R.id.uploadImage);
         save =(Button)findViewById(R.id.save);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        spinner = (Spinner)findViewById(R.id.spinner);
+        setSupportActionBar(toolbar);
+        setTitle("Toolbar Example");
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(AddPropertActivity.this,
+               android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.toolbar));
+        stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(stringArrayAdapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 1:
+                        Intent home =new Intent(getApplicationContext(),UserPageHomeActivity.class);
+                        home.putExtra("user",user);
+                        startActivity(home);
+                        break;
+                    case 2:
+                        Intent addprop =new Intent(getApplicationContext(),AddPropertActivity.class);
+                        addprop.putExtra("user",user);
+                        startActivity(addprop);
+                        break;
+                    case 3:
+                        Toast.makeText(getApplicationContext(),"Güncellenecek",Toast.LENGTH_LONG).show();
+                        break;
+                    case 4:
+                        Intent userupdate =new Intent(getApplicationContext(),UserUpdatePageActivity.class);
+                        userupdate.putExtra("user",user);
+                        startActivity(userupdate);
+                        break;
+                    case 5:
+                        SessionMenager session = new SessionMenager(getApplicationContext());
+                        session.LogoutUser();
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +153,6 @@ public class AddPropertActivity extends AppCompatActivity {
                     }
                 }
                 else{
-                    //TODO: giriş yapamazsa yapıalcak olanalar
                 }
             }
         });

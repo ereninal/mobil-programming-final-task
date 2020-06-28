@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserUpdatePageActivity"></activity>
+        <activity android:name=".UserPageHomeActivity"></activity>
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".UserUpdatePageActivity" />
         <activity
             android:name=".UseraddPageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -22,11 +24,6 @@
             android:name=".UserNewPasswordActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".AddPropertActivity" />
-        <activity
-            android:name=".UserPageActivity"
-            android:label="@string/title_activity_user_page"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">

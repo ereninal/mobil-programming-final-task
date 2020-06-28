@@ -13,13 +13,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PropertListAdapter extends BaseAdapter {
-    private Context context;
-    private int layout;
-    private ArrayList<ModelPropert> list;
+    Context context;
 
-    public PropertListAdapter(Context context, int layout, ArrayList<ModelPropert> list) {
+    ArrayList<ModelPropert> list;
+
+    public PropertListAdapter(Context context, ArrayList<ModelPropert> list) {
         this.context = context;
-        this.layout = layout;
         this.list = list;
     }
 
@@ -46,15 +45,17 @@ public class PropertListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View row = convertView;
-        ViewHolder holder = new ViewHolder();
+        ViewHolder holder = null;
         if(row == null){
             LayoutInflater inflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(layout,null);
+            row = inflater.inflate(R.layout.propert_item,parent,false);
+            holder = new ViewHolder();
             holder.title = (TextView)row.findViewById(R.id.pi_title);
             holder.fee =(TextView)row.findViewById(R.id.pi_fee);
             holder.date =(TextView)row.findViewById(R.id.pi_date);
             holder.type =(TextView)row.findViewById(R.id.pi_tyoe);
             holder.imageView =(ImageView)row.findViewById(R.id.pi_image);
+            row.setTag(holder);
 
         }
         else{
@@ -63,14 +64,10 @@ public class PropertListAdapter extends BaseAdapter {
         ModelPropert modelPropert = list.get(position);
         holder.title.setText(modelPropert.getTitle());
         holder.fee.setText(modelPropert.getFee());
-        holder.date.setText(modelPropert.getDate().toString());
+        holder.date.setText(modelPropert.getDate());
         byte[] propetImage = modelPropert.getImages();
         Bitmap bitmap = BitmapFactory.decodeByteArray(propetImage,0,propetImage.length);
         holder.imageView.setImageBitmap(bitmap);
-
-
-
-
         return row;
     }
 }

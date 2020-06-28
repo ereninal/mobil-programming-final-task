@@ -16,10 +16,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="spinner_type">
-        <item>Ev</item>
-        <item>Oda</item>
+    <string-array name="toolbar">
+        <item>"Hotel Booking"</item>
+        <item>Anasayfa</item>
+        <item>Mülk Ekle</item>
+        <item>Mülk Düzenle</item>
+        <item>Kullanıcı Düzenle</item>
+        <item>Çıkış Yap</item>
     </string-array>
-
-
 </resources>

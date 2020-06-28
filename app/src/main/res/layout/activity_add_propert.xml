@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     tools:context=".AddPropertActivity">
+    <include
+        layout="@layout/toolbar" />
     <EditText
         android:id="@+id/title"
         android:layout_width="match_parent"
